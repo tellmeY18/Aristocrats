@@ -5,7 +5,7 @@
 :root {
     --background: #ffffff;
     --foreground: #171717;
-    --font-artistic-sans: "Arial", sans-serif;
+    --font-artistic-sans: "Baloo 2", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,12 +15,56 @@
     }
 }
 
+/* Base Styles */
 body {
     color: var(--foreground);
     background: var(--background);
     font-family: var(--font-artistic-sans);
 }
 
+/* Navigation Styles */
+@layer components {
+    .nav {
+        @apply fixed w-full top-0 z-50;
+        background-color: var(--background);
+        border-bottom: 1px solid #4a4a4a;
+    }
+
+    /* Navigation Links */
+    .text-highlight {
+        color: var(--foreground);
+        font-family: var(--font-artistic-sans);
+    }
+
+    /* Mobile Menu Animation */
+    .mobile-menu-enter {
+        max-height: 0;
+        opacity: 0;
+        transition:
+            max-height 300ms ease-in-out,
+            opacity 300ms ease-in-out;
+    }
+
+    .mobile-menu-enter-active {
+        max-height: 12rem;
+        opacity: 1;
+    }
+
+    .mobile-menu-exit {
+        max-height: 12rem;
+        opacity: 1;
+    }
+
+    .mobile-menu-exit-active {
+        max-height: 0;
+        opacity: 0;
+        transition:
+            max-height 300ms ease-in-out,
+            opacity 300ms ease-in-out;
+    }
+}
+
+/* Layout Styles */
 .grid-layout {
     display: grid;
     grid-template-rows: 20px 1fr 20px;
@@ -37,11 +81,6 @@ body {
     }
 }
 
-.text-highlight {
-    color: var(--foreground);
-    font-family: var(--font-artistic-sans);
-}
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -55,6 +94,7 @@ body {
     }
 }
 
+/* Footer Styles */
 .footer-content {
     display: flex;
     gap: 1.5rem;
@@ -65,6 +105,7 @@ body {
     padding-top: 1rem;
 }
 
+/* Typography */
 h1 {
     font-size: 3.75rem;
     font-weight: 800;
